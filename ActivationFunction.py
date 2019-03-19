@@ -31,3 +31,20 @@ y3 = relu(x)
 plt.figure()
 plt.plot(x, y3)
 plt.show()
+
+# Identity Function
+# h(x) = x
+def identity_function(x):
+    return x
+
+# Softmax Function
+# y_{k} = exp(a_{k}) / sum_{i=1}^{n} exp(a_{i})
+# y_{k} = exp(a_{k} - c) / sum_{i=1}^{n} exp(a_{i} - c)
+# c는 입력값 중 최대값. exp(a)로 인한 오버플로우를 막기 위해
+def softmax(a):
+    c = np.max(a)
+    exp_a = np.exp(a - c)
+    sum_exp_a = np.sum(exp_a)
+    y = exp_a / sum_exp_a
+
+    return y
